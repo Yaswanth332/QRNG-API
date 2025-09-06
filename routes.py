@@ -43,10 +43,8 @@
 # # http://127.0.0.1:5000/api/random-int?min=1&max=10
 
 
-
-# routes.py
-from flask import Blueprint, request, jsonify
-import qrng, os
+from flask import Flask, Blueprint, request, jsonify
+import os
 from qiskit import QuantumCircuit, Aer, execute
 import numpy as np
 import string
@@ -60,8 +58,8 @@ import base64
 
 app = Flask(__name__)
 api = Blueprint("api", __name__)
+SECRET_API_KEY = os.getenv("SECRET_API_KEY", "12345-ABCDE")  # Default for testing
 
-SECRET_API_KEY = os.getenv("SECRET_API_KEY","12345-ABCDE" )
 
 # In-memory stores (in production, use Redis or database)
 captcha_store = {}
