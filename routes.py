@@ -4,7 +4,7 @@ import qrng, os
 
 api = Blueprint("api", __name__)
 
-SECRET_API_KEY = os.getenv("SECRET_API_KEY", None)
+SECRET_API_KEY = os.getenv("SECRET_API_KEY", "12345-ABCDE")
 
 def check_api_key():
     """Check if request has valid API key in header."""
